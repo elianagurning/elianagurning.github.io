@@ -1,0 +1,89 @@
+:root{
+  --bg:#EEF2F7; --kartu:#FFFFFF; --teks:#10223B; --redup:#51627A;
+  --aksen:#2F5BFF; --sorot:#FFD23F; --garis:#CFD8E6;
+}
+:root[data-tema="gelap"]{
+  --bg:#0E1726; --kartu:#16233A; --teks:#E8EEF8; --redup:#9AA9C2;
+  --aksen:#7C9BFF; --sorot:#FFD23F; --garis:#2A3A57;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:"IBM Plex Sans",system-ui,sans-serif;background:var(--bg);color:var(--teks);line-height:1.65;transition:background .3s,color .3s}
+h1,h2,h3,.logo{font-family:"Bricolage Grotesque",sans-serif;line-height:1.1}
+a{color:var(--aksen)}
+:focus-visible{outline:3px solid var(--sorot);outline-offset:3px}
+
+/* Navigasi */
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:1.5rem;padding:.8rem 5vw;background:var(--bg);border-bottom:1px solid var(--garis)}
+.logo{font-weight:800;font-size:1.3rem;text-decoration:none;color:var(--teks);margin-right:auto}
+.nav nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.nav nav a{color:var(--redup);text-decoration:none;font-weight:500}
+.nav nav a:hover{color:var(--aksen)}
+#tema{font:inherit;background:var(--teks);color:var(--bg);border:0;border-radius:99px;padding:.35rem .9rem;cursor:pointer}
+
+section{padding:5rem 5vw;max-width:1000px;margin:auto}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.5rem;display:inline-block;background:linear-gradient(transparent 62%,var(--sorot) 62%)}
+:root[data-tema="gelap"] h2{background:linear-gradient(transparent 62%,#3b4a10 62%)}
+.besar{font-size:1.25rem;max-width:62ch}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;min-height:88vh}
+h1{font-size:clamp(4rem,12vw,8.5rem);font-weight:800;letter-spacing:-.04em;animation:masuk .8s ease both}
+@keyframes masuk{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.status{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1rem;color:var(--redup);font-weight:500}
+.dot{width:10px;height:10px;border-radius:50%;background:#22C55E}
+.peran{font-size:1.2rem;margin:1.5rem 0;max-width:34ch}
+#ketik{color:var(--aksen);font-weight:500}
+.kursor{animation:kedip 1s steps(1) infinite}
+@keyframes kedip{50%{opacity:0}}
+.aksi{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{font:inherit;font-weight:500;padding:.7rem 1.3rem;border-radius:8px;border:2px solid var(--teks);background:transparent;color:var(--teks);text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.utama{background:var(--aksen);border-color:var(--aksen);color:#fff}
+.foto{aspect-ratio:1;border-radius:46% 54% 42% 58%/50% 40% 60% 50%;background:var(--aksen);display:grid;place-items:center;overflow:hidden;box-shadow:14px 14px 0 var(--sorot)}
+.foto span{font-family:"Bricolage Grotesque";font-size:6rem;font-weight:800;color:#fff}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+/* Timeline */
+.timeline{list-style:none;border-left:3px solid var(--garis);padding-left:1.5rem}
+.timeline li{position:relative;margin-bottom:2rem}
+.timeline li::before{content:"";position:absolute;left:calc(-1.5rem - 9px);top:.35rem;width:15px;height:15px;border-radius:50%;background:var(--aksen);border:3px solid var(--bg)}
+.timeline time{color:var(--aksen);font-weight:500;font-size:.95rem}
+.timeline h3{font-size:1.25rem;margin:.2rem 0}
+.timeline p{color:var(--redup);max-width:60ch}
+
+/* Skill */
+.skills{list-style:none;display:grid;gap:1rem;max-width:560px}
+.skills li{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:1rem;font-weight:500}
+.bar{height:12px;background:var(--garis);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--aksen);border-radius:99px;transition:width 1.2s ease}
+.skills.tampil .bar i{width:var(--v)}
+
+/* Proyek */
+.proyek{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.proyek article{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:.6rem;transition:transform .2s,border-color .2s}
+.proyek article:hover{transform:translateY(-4px);border-color:var(--aksen)}
+.proyek h3{font-size:1.25rem}
+.proyek p{color:var(--redup)}
+.proyek .tag{font-size:.9rem;color:var(--aksen);margin-top:auto}
+.proyek a{font-weight:500}
+
+/* Kontak */
+.kontak{list-style:none;margin-top:1.5rem;display:grid;gap:.5rem;font-size:1.1rem}
+footer{text-align:center;padding:2rem;color:var(--redup);border-top:1px solid var(--garis)}
+
+/* Responsif */
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:3rem}
+  .foto{max-width:260px}
+  .nav nav{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* Cetak jadi CV */
+@media print{
+  .nav,.aksi,.foto,.kursor,#kontak .besar{display:none}
+  body{background:#fff;color:#000}
+  section{padding:1rem 0;min-height:0}
+  .bar i{width:var(--v)!important}
+}
